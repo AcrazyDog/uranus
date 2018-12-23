@@ -1,0 +1,29 @@
+<div class="content-header">
+	<h2 class="content-title">SQL检查</h2>
+	<span class="layui-breadcrumb">
+	  <a href="#!home">首页</a>
+	  <a><cite>SQL检查</cite></a>
+	</span>
+</div>
+
+<div>
+	<div class="layui-form toolbar">
+		<div class="layui-row">
+			<textarea id="sql" placeholder="输入SQL" class="layui-textarea" style="height: 200px"></textarea>&emsp;
+		</div>
+		<div class="layui-row">
+			<button id="checkSqlBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe615;</i>检查</button>&emsp;
+		</div>
+		<div class="layui-row">
+			<hr class="layui-bg-green">
+			**本检查只能检查出SQL基本语法，不在数据库执行，所以逻辑错误(eg:表不存在)以及规范性问题检查不粗
+			<hr class="layui-bg-green">
+			**本检查代码逻辑从kd.bos.service.upgrade.DeployServiceImpl.deploySql方法中获取
+			<hr class="layui-bg-green">
+			eg:IF NOT EXISTS (SELECT 1 FROM KSQL_USERCOLUMNS WHERE KSQL_COL_TABNAME = 'T_FA_STOREPLACE' AND KSQL_COL_NAME IN ('FMASTERID'))    ALTER TABLE T_FA_STOREPLACE ADD (FMASTERID EMPTY DEFAULT 0 NOT NULL );
+		</div>
+	</div>
+	<!-- 数据表格 -->
+</div>
+
+<script type="text/javascript" src="assets/js/bug/checksql.js?v=1"></script>

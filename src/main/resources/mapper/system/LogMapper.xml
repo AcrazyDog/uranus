@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kingdee.uranus.mapper.LogMapper" >
+  <resultMap id="BaseResultMap" type="com.kingdee.uranus.model.Log" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="bug_no" property="bugNo" jdbcType="VARCHAR" />
+    <result column="bug_closer" property="bugCloser" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result typeHandler="com.kingdee.uranus.handler.BaseEnumTypeHandler" javaType="com.kingdee.uranus.model.LogType" column="log_type" property="logType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bug_no, bug_closer, ip, create_time,reason,log_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.kingdee.uranus.model.Log" >
+    insert into sys_log (id, bug_no, bug_closer, 
+      ip, reason,log_type
+      )
+    values (#{id,jdbcType=BIGINT}, #{bugNo,jdbcType=VARCHAR}, #{bugCloser,jdbcType=VARCHAR}, 
+      #{ip,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, #{logType,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kingdee.uranus.model.Log" >
+    insert into sys_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bugNo != null" >
+        bug_no,
+      </if>
+      <if test="bugCloser != null" >
+        bug_closer,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="bugNo != null" >
+        #{bugNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bugCloser != null" >
+        #{bugCloser,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kingdee.uranus.model.Log" >
+    update sys_log
+    <set >
+      <if test="bugNo != null" >
+        bug_no = #{bugNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bugCloser != null" >
+        bug_closer = #{bugCloser,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kingdee.uranus.model.Log" >
+    update sys_log
+    set bug_no = #{bugNo,jdbcType=VARCHAR},
+      bug_closer = #{bugCloser,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      reason = #{reason,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 查询登录日志 -->
+  <select id="selectLogList" resultMap="BaseResultMap" >
+	  SELECT 
+	  <include refid="Base_Column_List"></include>
+	  FROM sys_log a
+	  where 1=1
+	  <if test="startDate != null">
+		AND a.create_time&gt;=#{startDate}
+	  </if>
+	  <if test="endDate != null">
+		AND a.create_time&lt;=#{endDate}
+	  </if>
+	  <if test="userName != null">
+	  	AND a.bug_closer=#{userName}
+	  </if>
+	  ORDER BY id DESC
+  </select>
+    <!-- 查询登录日志 -->
+  <select id="selectLogCount" resultType="int" >
+  SELECT 
+  count(1)
+  FROM sys_log a
+  <if test="startDate != null">
+	AND a.create_time&gt;=#{startDate}
+  </if>
+  <if test="endDate != null">
+	AND a.create_time&lt;=#{endDate}
+  </if>
+  <if test="userName != null">
+  	AND b.bug_closer=#{userName}
+  </if>
+  </select>
+  
+    <!-- 查询登录日志 -->
+  <select id="selectCloserList" resultType="map" >
+	  SELECT 
+	  COUNT(1) number,
+	  bug_closer name
+	FROM
+	  (SELECT 
+	    COUNT(1),
+	    bug_closer 
+	  FROM
+	    `sys_log` 
+	  WHERE create_time &gt;=#{startDate}
+	  and create_time &lt;=#{endDate}
+	    AND log_type = 'CLOSE' 
+	  GROUP BY bug_closer,
+	    bug_no) t 
+	GROUP BY bug_closer 
+	ORDER BY COUNT(1) DESC 
+	limit 7
+  </select>
+</mapper>

@@ -1,0 +1,38 @@
+<div class="content-header">
+	<h2 class="content-title">Redis 管理</h2>
+	<span class="layui-breadcrumb">
+	  <a href="#!home">首页</a>
+	  <a><cite>Redis 管理</cite></a>
+	</span>
+</div>
+
+<div>
+	<div class="layui-form toolbar">
+		<select id="url">
+			<option value="">-请选择-</option>
+			<option value="172.17.51.97">172.17.51.97 -- 分支/主干开发环境</option>
+			<option value="172.18.5.37">172.18.5.37 -- 分支/主干测试环境</option>
+		</select>&emsp;
+		<input id="key" class="layui-input search-input" type="text" placeholder="输入KEY" />&emsp;
+		<button id="searchBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe615;</i>搜索</button>&emsp;
+	</div>
+	<!-- 数据表格 -->
+	<table class="layui-table" id="table" lay-filter="table"></table>
+</div>
+<!-- 表单弹窗 -->
+<script type="text/html" id="viewModel">
+	<form id="viewForm" class="layui-form model-form" action="" style="height: 850px;margin:10px">
+		<div class="layui-form-item" style="height: 100%; width: 100%">
+ 			<div class="layui-input-block" style="height: 100%; width: 100%">
+				<textarea id="content" class="layui-textarea"
+						style="height: 100%; width: 640px"></textarea>
+			</div>
+		</div>
+	</form>
+</script>
+<!-- 表格操作列 -->
+<script type="text/html" id="barTpl">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="view">查看</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/javascript" src="assets/js/bug/redisManage.js"></script>

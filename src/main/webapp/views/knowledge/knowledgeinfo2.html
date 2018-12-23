@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="assets/css/markdown-git.css" />
+<style>
+	@media (max-heigth: 767px') {
+		.markdown-body {
+			padding: 5px;
+		}
+	}
+</style>
+
+<div class="content-header">
+	<h2 class="content-title">新增知识</h2>
+	<span class="layui-breadcrumb"> <a href="#!home">首页</a> <a><cite>新增知识</cite></a>
+	</span>
+</div>
+
+<div style="height: 100%">
+	<div class="layui-fluid layui-col-space10" style="height: 100%">
+		<div class="layui-col-md6" style="height: 100%;">
+<!-- 			<form id="addForm" class="layui-form model-form" action=""> -->
+				<input hidden="hidden" id="id"  type="text" />
+				<div class="layui-form-item">
+					<label class="layui-form-label">标题：</label>
+		 			<div class="layui-input-block">
+						<input id="title" placeholder="请输入标题" type="text" class="layui-input" maxlength="200" lay-verify="required" required />
+					</div>
+				</div>
+				<div class="layui-form-item layui-form-text" style="height: 100%;">
+					<textarea id="content" placeholder="请输入内容" class="layui-textarea"
+						style="height: 100%; width: 100%" onkeyup="compile()"></textarea>
+				</div>
+<!-- 			</form>	 -->
+		</div>
+		<div class="layui-col-md6" style="height: 100%;">
+			<div class="layui-form-item model-form-footer">
+				<button class="layui-btn layui-btn-primary" type="button" id="btnCancel">取消</button>
+				<button class="layui-btn" lay-filter="btnSubmit" onclick="doSave();">保存</button>
+			</div>
+			<div class="markdown-body" id="result" style="height: 100%;overflow: auto"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="assets/js/knowledge/knowledgeinfo.js"></script>
+<script type="text/javascript"
+	src="assets/showdown-master/dist/showdown.js"></script>
+

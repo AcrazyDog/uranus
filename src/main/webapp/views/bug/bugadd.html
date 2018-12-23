@@ -1,0 +1,308 @@
+<link rel="stylesheet" href="assets/libs/layui/css/layui.css" />
+<link rel="stylesheet"
+	href="assets/libs/jqeury-autocomplete/css/awesomplete.css" />
+<div class="content-header">
+	<h2 class="content-title">新增BUG</h2>
+	<span class="layui-breadcrumb"> <a href="#!home">首页</a> <a><cite>新增BUG</cite></a>
+	</span>
+</div>
+
+<div class="layui-container">
+	<form class="layui-form layui-form-pane" name="form">
+		<div class="layui-row">
+			<div class="layui-col-md5">
+				<div class="layui-form-item">
+					<label class="layui-form-label">产品任务</label>
+					<div class="layui-input-inline">
+						<input type="text" style="width: 300px" class="layui-input"
+							id="productName" name="productName" value="下一代云ERP_V1.0"
+							placeholder="请输入关键词直接搜索"> <input hidden="hiddden"
+							type="text" class="layui-input" style="display: none"
+							id="projectTaskId" name="projectTaskId"
+							value="236012601610386847648913483649384966"
+							placeholder="请输入关键词直接搜索">
+						<div class="search_suggest" id="productName_suggest">
+							<ul>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">子系统</label>
+					<div class="layui-input-inline">
+						<input type="text" style="width: 300px" class="layui-input"
+							id="subSystemName" name="subSystemName" placeholder="请输入关键词直接搜索">
+						<input hidden="hiddden" type="text" class="layui-input"
+							id="subSystemId" style="display: none" name="subSystemId"
+							placeholder="请输入关键词直接搜索">
+					</div>
+				</div>
+				<div class="layui-form-item" pane>
+					<label class="layui-form-label">迭代阶段</label>
+					<div class="layui-input-block">
+						<select lay-filter="ItStage" name="ItStage" id="ItStage"
+							lay-verify="required">
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">优先级</label>
+					<div class="layui-input-block">
+						<select name="ddlBugPri" id="ddlBugPri" lay-verify="required">
+							<option value=低>低</option>
+							<option value=中>中</option>
+							<option value=高>高</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">缺陷类型</label>
+					<div class="layui-input-block">
+						<select name="ddlDefectType" id="ddlDefectType"
+							lay-verify="required">
+							<option value=003>功能错误</option>
+							<option value=001>实现与需求不一致</option>
+							<option value=002>中断退出</option>
+							<option value=004>数据错误</option>
+							<option value=005>人机交互</option>
+							<option value=006>需求缺陷</option>
+							<option value=007>评审缺陷</option>
+							<option value=7DE22443-2AF2-4BFC-8E87-6B763665DF9E>性能缺陷</option>
+							<option value=E9F390C4-1585-47B6-B52F-0198223CD5D0>产品建议</option>
+							<option value=F0476B94-3EE7-4739-B047-6B937C28BBCB>用户文档缺陷</option>
+							<option value=FCB01BFB-6D0E-48BA-99B9-BDFAABDA9E21>设计缺陷</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item" pane>
+					<label class="layui-form-label">问题关键词</label>
+					<div class="layui-input-block">
+						<input type="text" name="txtQsnKeyWord" id="txtQsnKeyWord"
+							required lay-verify="required" placeholder="请输入问题关键词"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item" pane>
+					<label class="layui-form-label">数据环境</label>
+					<div class="layui-input-block">
+						<input type="text" name="txtQsnDataEnv" id="txtQsnDataEnv"
+							required lay-verify="required" placeholder="请数据环境"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md5">
+				<div class="layui-form-item">
+					<label class="layui-form-label">缺陷性质</label>
+					<div class="layui-input-block">
+						<select name="ddlDefectProp" id="ddlDefectProp"
+							lay-verify="required">
+							<option value=BK0011>功能</option>
+							<option value=BK0012>易用性</option>
+							<option value=BK0013>可靠性</option>
+							<option value=BK0014>性能</option>
+							<option value=BK0015>可支持性</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">发现阶段</label>
+					<div class="layui-input-block">
+						<select name="ddlDetectStage" id="ddlDetectStage"
+							lay-verify="required">
+							<option value=98B64BB8-E354-4D2A-A6FF-DF679782939D>功能测试</option>
+							<option value=95F84DCA-618B-4A54-8725-2E4A102F520B>需求</option>
+							<option value=E335523A-CCC2-4767-96AA-31E8337E0A13>设计</option>
+							<option value=D9BFA20F-C4C7-4F52-8309-5E36F0B3FCD2>单元测试</option>
+							<option value=5CF7092E-E886-40E5-BEC2-49DFCD093B94>集成测试</option>
+							<option value=5BAD7E58-472A-4856-9F3D-1FF787AA490D>金盘测试</option>
+							<option value=60A2FAE2-7B82-4CA2-9BC7-3E14E13B9B8F>渠道测试</option>
+							<option value=205F5262-BFA4-412E-B977-2E2DDF3A6EA8>Beta测试</option>
+							<option value=2F321C8A-97B9-4F2C-AE54-B44E6CF8083F>验收测试</option>
+							<option value=20EBF1DA-8767-46B8-8157-3F17E6AF3B40>系统测试</option>
+							<option value=CC333874-AFA8-4FF0-A552-08B0174B56AF>冒烟测试</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">是否重现</label>
+					<div class="layui-input-block">
+						<select name="FIsRecurred" id="FIsRecurred" lay-verify="required">
+							<option value="否">否</option>
+							<option value="是">是</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">是否反复</label>
+					<div class="layui-input-block">
+						<select name="FIsRepeated" id="FIsRepeated" lay-verify="required">
+							<option value="否">否</option>
+							<option value="是">是</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item" pane>
+					<label class="layui-form-label">下一步处理人</label>
+					<div class="layui-input-block">
+						<input type="text" name="nextHandlePerson" lay-verify="required"
+							placeholder="请输入下一步处理人" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">关联项目任务</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="relateProjectTaskName"
+							name="relateProjectTaskName" placeholder="请输入关键词直接搜索"
+							style='width: 365px'> <input hidden="hidden" type="text"
+							class="layui-input" style="display: none"
+							id="relateProjectTaskId" name="relateProjectTaskId">
+					</div>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">操作步骤</label>
+					<div class="layui-input-block">
+						<textarea name="txtQsnOpeStep" id="txtQsnOpeStep"
+							placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+				</div>
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">详细描述</label>
+					<div class="layui-input-block">
+						<textarea name="txtQsnDetailDesc" placeholder="请输入内容"
+							class="layui-textarea"></textarea>
+					</div>
+				</div>
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">图片</label>
+					<div class="layui-row layui-col-space10" id="preview"
+						style="height: 150px; background: #fff; margin-left: 2px; margin-right: 2px"></div>
+					<div id='log' style="color: green"></div>
+					<input type="text" id="imageUrls" hidden="hidden"></input>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="layui-collapse" lay-filter="test">
+					<div class="layui-colla-item">
+						<h2 class="layui-colla-title">隐藏域</h2>
+						<div class="layui-colla-content">
+							<!-- 							<label class="layui-form-label">产品名称</label> -->
+							<!-- 							<div class="layui-input-block"> -->
+							<!-- 								<input type="text" name="title" required lay-verify="required" -->
+							<!-- 									placeholder="请输入标题" autocomplete="off" class="layui-input"> -->
+							<!-- 							</div> -->
+							<!-- 							<label class="layui-form-label">产品版本</label> -->
+							<!-- 							<div class="layui-input-block"> -->
+							<!-- 								<input type="text" name="title" required lay-verify="required" -->
+							<!-- 									placeholder="请输入标题" autocomplete="off" class="layui-input"> -->
+							<!-- 							</div> -->
+							<label class="layui-form-label">BUG代码</label>
+							<div class="layui-input-block">
+								<input type="text" name="txtBugCode" id="txtBugCode" required
+									lay-verify="required" placeholder="请输入标题" autocomplete="off"
+									class="layui-input">
+							</div>
+							<label class="layui-form-label">数据库</label>
+							<div class="layui-input-block">
+								<select name="city" id="city" lay-verify="required">
+									<option value=CA271099-E611-492E-91E4-EF3670E8224F>Sql
+										Server 2000</option>
+									<option value=F9481F80-0074-4FD8-B758-932536F2800B>Sql
+										Server 2005</option>
+									<option value=942A620E-10BF-423F-BDE1-EB925B8CF337>Oracle</option>
+									<option value=863DE5B5-730B-4FCE-A929-81522A304A47>Db2</option>
+									<option value=E2994E9D-0597-4171-8DD8-662CB7C95892>Sql
+										Server 2012</option>
+									<option value=97D9382D-135F-4AB2-A195-28F0B6791490>其他</option>
+									<option value=9B73B3E0-FA33-46A8-BD26-0C2FDC6A76B4>Sql
+										Server 2008</option>
+									<option value=PG0AAD2A-9E72-4183-A143-6BD36948CA93>Postgres</option>
+								</select>
+							</div>
+							<label class="layui-form-label">项目组</label>
+							<div class="layui-input-block">
+								<input type="text" name="group" id="group" lay-verify="required"
+									placeholder="请输入标题" autocomplete="off" class="layui-input" />
+								<input hidden="hidden" type="text" style="display: none"
+									name="groupId" id="groupId" lay-verify="required"
+									placeholder="请输入标题" autocomplete="off" class="layui-input" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: none">
+				<!-- 缺陷类型 -->
+				<div>
+					<input type="text" name="txtProdVer" id="txtProdVer" required
+						lay-verify="required" placeholder="请输入标题" autocomplete="off"
+						class="layui-input">
+				</div>
+				<div>
+					<input type="text" name="txtProdName" id="txtProdName" required
+						lay-verify="required" placeholder="请输入标题" autocomplete="off"
+						class="layui-input"> <input type="text" name="FIsHistory"
+						id="FIsHistory" value="否" lay-verify="required"
+						placeholder="请输入标题" autocomplete="off" class="layui-input">
+				</div>
+				<div>
+					<input type="text" name="ddlTestAngle" id="ddlTestAngle"
+						value="选择测试角度" lay-verify="required" placeholder="请输入标题"
+						autocomplete="off" class="layui-input">
+				</div>
+				<div>
+					<input type="text" name="ddlPonderance" id="ddlPonderance"
+						value="737DA4C8-37B5-4D12-B18D-640829AC76BA" lay-verify="required"
+						placeholder="请输入标题" autocomplete="off" class="layui-input">
+				</div>
+				<div>
+					<input type="text" name="ddlInstancy" id="ddlInstancy"
+						value="E7181B40-BF14-44D3-877F-7FEA96B5BB23" lay-verify="required"
+						placeholder="请输入标题" autocomplete="off" class="layui-input">
+				</div>
+				<div>
+					<input type="text" name="ddlTestMethod" id="ddlTestMethod"
+						value="AA899435-8246-4BA8-960B-DE5C84C1CDB2" lay-verify="required"
+						placeholder="请输入标题" autocomplete="off" class="layui-input">
+				</div>
+				<div>
+					<input type="text" name="ddlOS" id="ddlOS"
+						value="4311B5FD-E212-40CE-8DC0-26B56A9BF4EC" lay-verify="required"
+						placeholder="请输入标题" autocomplete="off" class="layui-input">
+					<input type="text" name="txtStatus" id="txtStatus" value="计划"
+						lay-verify="required" placeholder="请输入标题" autocomplete="off"
+						class="layui-input">
+				</div>
+
+				语言版本<input type="text" name="FLanguageVersion" id="FLanguageVersion"
+					placeholder="请输入标题" autocomplete="off" class="layui-input"
+					value="简体"> 数据<input type="text" name="ddlDB" id="ddlDB"
+					value="CA271099-E611-492E-91E4-EF3670E8224F" placeholder="请输入标题"
+					autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn" lay-submit lay-filter="submitBtn">立即提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<script src="assets/libs/jqeury-autocomplete/js/awesomplete.js"></script>
+<script type="text/javascript" src="/assets/js/bug/bugadd.js"></script>
+
+<script>
+	//注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
+	layui.use('element', function() {
+		var element = layui.element;
+		var element = layui.element;
+		var layer = layui.layer;
+	});
+</script>
+<script type="text/javascript" src="assets/libs/layui/layui.all.js"></script>

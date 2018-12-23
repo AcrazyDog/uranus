@@ -1,0 +1,129 @@
+<div class="content-header">
+	<h2 class="content-title">task list</h2>
+	<span class="layui-breadcrumb">
+	  <a href="#!home">首页</a>
+	  <a><cite>task list</cite></a>
+	</span>
+</div>
+
+<div style="display: none">
+	<div class="layui-form toolbar">
+		搜索：
+		<select id="searchKey">
+			<option value="">-请选择-</option>
+			<option value="user_id">ID</option>
+			<option value="user_account">账号</option>
+			<option value="user_nickname">用户名</option>
+			<option value="mobile_phone">手机号</option>
+		</select>&emsp;
+		<input id="searchValue" class="layui-input search-input" type="text" placeholder="输入搜索内容" />&emsp;
+		<button id="searchBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe615;</i>搜索</button>&emsp;
+	</div>
+</div>
+	<button id="addBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe654;</i>添加</button>&emsp;
+	<button id="closeAllBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe654;</i>一键关闭</button>
+	<table class="layui-table" id="table" lay-filter="table"></table>
+
+<!-- bug详情弹窗 -->
+<script type="text/html" id="bugDetail">
+	<form id="bugDetialForm" class="layui-form model-form" action="" style="height:700px">
+		<div class="layui-form-item">
+			<label class="layui-form-label">下一步处理人：</label>
+ 			<div class="layui-input-block">
+				<input id="nextHandleUserName" type="text" class="layui-input" maxlength="20" lay-verify="required" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">问题关键词：</label>
+ 			<div class="layui-input-block">
+				<input id="keyWord" type="text" class="layui-input" maxlength="20" lay-verify="required" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">操作步骤：</label>
+ 			<div class="layui-input-block">
+				<input id="operateStep" type="text" class="layui-input" lay-verify="required|phone" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">详细描述：</label>
+			<div class="layui-input-block">
+    			  <textarea id="detail" placeholder="" class="layui-textarea"></textarea>
+  			 </div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">数据环境：</label>
+ 			<div class="layui-input-block">
+				<input id="environment" type="text" class="layui-input" lay-verify="required|phone" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">图片：</label>
+ 			<div class="layui-input-block" style="width:100px">
+				<!--<a id="imageUrl_a" href="" onclick='viewImage(this)'> -->
+					<img style="width:350px" id="imageUrl_img" src="" alt="" onclick='viewImage(this)'>
+				<!--</a>-->
+			</div>
+		</div>
+	</form>
+</script>
+
+
+<!-- 表单弹窗:意见 -->
+<script type="text/html" id="closeBugModel">
+	<form id="closeBugForm" class="layui-form model-form" action="" style="height:200px">
+		<input name="bugNo" type="hidden" />
+		<div class="layui-form-item">
+			<label class="layui-form-label">原因：</label>
+ 			<div class="layui-input-block">
+				<input name="fOpinion" placeholder="请输入原因" type="text" class="layui-input" maxlength="500" lay-verify=""  />
+			</div>
+		</div>
+		<div class="layui-form-item model-form-footer">
+			<button class="layui-btn layui-btn-primary" type="button" id="cancelCloseBug">取消</button>
+			<button class="layui-btn" lay-filter="saveCloseBug" lay-submit>保存</button>
+		</div>
+	</form>
+</script>
+
+<!-- bug详情弹窗 -->
+<script type="text/html" id="viewTask">
+	<form id="bugDetialForm" class="layui-form model-form" action="" style="height:700px">
+		<div class="layui-form-item">
+			<label class="layui-form-label">产品任务：</label>
+ 			<div class="layui-input-block">
+				<input id="prodtName" type="text" class="layui-input" maxlength="20" lay-verify="required" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">任务编号：</label>
+ 			<div class="layui-input-block">
+				<input id="projectTaskCode" type="text" class="layui-input" maxlength="20" lay-verify="required" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">任务名称：</label>
+ 			<div class="layui-input-block">
+				<input id="taskName" type="text" class="layui-input" lay-verify="required" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">详细描述：</label>
+			<div class="layui-input-block">
+    			  <textarea id="desc" placeholder="" class="layui-textarea"></textarea>
+  			 </div>
+		</div>
+	</form>
+</script>
+
+<!-- 表单弹窗:意见 -->
+<script type="text/html" id="viewImageModel">
+	<img style="width:100%" id="imageUrl_view" src="" alt="">
+</script>
+
+<!-- 表格操作列 -->
+<script type="text/html" id="barTpl">
+  	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="close">提交</a>
+	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="view">查看</a>
+</script>
+<script type="text/javascript" src="assets/js/bug/tasklist.js"></script>

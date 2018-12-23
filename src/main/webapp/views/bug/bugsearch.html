@@ -1,0 +1,86 @@
+<div class="content-header">
+	<h2 class="content-title">BUG檢索</h2>
+	<span class="layui-breadcrumb">
+	  <a href="#!home">首页</a>
+	  <a><cite>BUG檢索</cite></a>
+	</span>
+</div>
+
+<div>
+	<div class="layui-form toolbar">
+		<input id="queryStr" placeholder="请输入关键词" type="text" class="layui-input search-input" maxlength="200"  style="width: 475px;" />&emsp;
+		<button id="searchBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+	</div>
+	<div id = "result" style="margin-right:80px">
+<!-- 		<div class="layui-card" style="margin-top:30px"> -->
+<!-- 		  <div class="layui-card-header" style="height:28px;">卡片面板</div> -->
+<!-- 		  <div class="layui-card-body"> -->
+<!-- 		    卡片式面板面板通常用于非白色背景色的主体内<br> -->
+<!-- 		    从而映衬出边框投影 -->
+<!-- 		  </div> -->
+<!-- 		</div> -->
+	</div>
+	
+	<div id="pager"></div>
+</div>
+
+<link rel="stylesheet" href="assets/css/markdown-git.css" />
+
+<!-- 表单弹窗:查看 -->
+<!-- bug详情弹窗 -->
+<script type="text/html" id="bugDetail">
+	<form id="bugDetialForm" class="layui-form model-form" action="" style="height:700px">
+	
+<!--	<div class="layui-form-item">
+			<label class="layui-form-label">下一步处理人：</label>
+ 			<div class="layui-input-block">
+				<input id="nextHandleUserName" type="text" class="layui-input" maxlength="20" lay-verify="required" required />
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">问题关键词：</label>
+ 			<div class="layui-input-block">
+				<input id="keyWord" type="text" class="layui-input" maxlength="20" lay-verify="required" required />
+			</div>
+		</div> -->
+		<div class="layui-form-item">
+			<label class="layui-form-label">操作步骤：</label>
+ 			<div class="layui-input-block">
+				<textarea id="operateStep" placeholder="" class="layui-textarea"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">详细描述：</label>
+			<div class="layui-input-block">
+    			  <textarea id="detail" placeholder="" class="layui-textarea"></textarea>
+  			 </div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">数据环境：</label>
+ 			<div class="layui-input-block">
+				<input id="environment" type="text" class="layui-input" lay-verify="required|phone" required />
+			</div>
+		</div>
+		<div class="layui-form-item" style="padding-left:110px">
+			<div class="layui-row layui-col-space10" style="height:60px">
+  				<div class="layui-col-md3" style="margin-lef:110px">
+   					<img style="width:180px" id="imageUrl_img" src="" alt="" onclick='viewImage(this)'>
+  				</div>
+  				<div class="layui-col-md3">
+   					<img style="width:180px" id="imageUrl_img2" src="" alt="" onclick='viewImage(this)'>
+  				</div>
+  				<div class="layui-col-md3">
+   				 <img style="width:180px" id="imageUrl_img3" src="" alt="" onclick='viewImage(this)'>
+  				</div>
+				<div class="layui-col-md3">
+   				 	<img style="width:180px" id="imageUrl_img4" src="" alt="" onclick='viewImage(this)'>
+  				</div>
+			</div>
+		</div>
+		<div class="layui-form-item" style="margin-left:30px;margin-top:15px">
+			<table class="layui-table" id="handledetail" lay-filter="table" style="height:20px"></table>
+		</div>
+	</form>
+</script>
+
+<script type="text/javascript" src="assets/js/bug/bugsearch.js?v=1.1"></script>

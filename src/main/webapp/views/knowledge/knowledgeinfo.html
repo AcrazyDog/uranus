@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<title>Simple example - Editor.md examples</title>
+<link rel="stylesheet"
+	href="assets/libs/editor.md-master/examples/css/style.css" />
+<link rel="stylesheet"
+	href="assets/libs/editor.md-master/css/editormd.css" />
+<link rel="shortcut icon"
+	href="https://pandao.github.io/editor.md/favicon.ico"
+	type="image/x-icon" />
+</head>
+<body>
+	<div style="height: 100%">
+		<div class="layui-fluid layui-col-space10" style="height: 10%">
+			<div class="layui-col-md6" style="height: 10%;">
+				<input hidden="hidden" id="id" type="text" />
+				<div class="layui-form-item">
+					<label class="layui-form-label">标题：</label>
+					<div class="layui-input-block">
+						<input id="title" placeholder="请输入标题" type="text"
+							class="layui-input" maxlength="200" lay-verify="required"
+							required />
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md6" style="height: 10%;">
+				<div class="layui-form-item model-form-footer">
+					<button class="layui-btn layui-btn-primary" type="button"
+						id="btnCancel">取消</button>
+					<button class="layui-btn" lay-filter="btnSubmit"
+						onclick="doSave();">保存</button>
+				</div>
+			</div>
+		</div>
+		<div id="layout" style="height: 95%">
+			<div id="test-editormd">
+				<textarea style="display: none;" id="content"></textarea>
+			</div>
+		</div>
+	</div>
+
+	<script src="assets/libs/editor.md-master/examples/js/jquery.min.js"></script>
+	<script src="assets/libs/editor.md-master/editormd.min.js"></script>
+	<script type="text/javascript"
+		src="assets/js/knowledge/knowledgeinfo.js"></script>
+</body>
+</html>

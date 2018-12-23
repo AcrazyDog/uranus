@@ -1,0 +1,37 @@
+<div class="content-header">
+	<h2 class="content-title">知识库</h2>
+	<span class="layui-breadcrumb">
+	  <a href="#!home">首页</a>
+	  <a><cite>知识库</cite></a>
+	</span>
+</div>
+
+<div>
+	<div class="layui-form toolbar">
+		日期：<input id="searchDate" class="layui-input search-input date-icon" type="text" placeholder="请选择日期范围" style="width: 175px;" />&emsp;
+		创建人：<input id="createUserName" placeholder="请输入创建人名称" type="text" class="layui-input search-input" maxlength="50"  style="width: 175px;" />&emsp;
+		标题：<input id="title" placeholder="请输入标题" type="text" class="layui-input search-input" maxlength="200"  style="width: 275px;" />&emsp;
+		<button id="searchBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+	</div>
+	<!-- 数据表格 -->
+	<table class="layui-table" id="table" lay-filter="table"></table>
+</div>
+
+<script type="text/html" id="barTpl">
+	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="view">查看</a>
+	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
+	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+</script>
+
+<link rel="stylesheet" href="assets/css/markdown-git.css" />
+
+<!-- 表单弹窗:查看 -->
+<script type="text/html" id="viewKnowledgeModel">
+	<div style="height: 850px;margin:10px">
+		<div class="markdown-body" id="result" style="height: 100%;overflow: auto"></div>
+	</div>
+</script>
+
+<script type="text/javascript" src="assets/js/knowledge/knowledgelist.js"></script>
+<script type="text/javascript"
+	src="assets/showdown-master/dist/showdown.js"></script>

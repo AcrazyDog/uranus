@@ -1,0 +1,38 @@
+<div class="content-header">
+	<h2 class="content-title">知识库</h2>
+	<span class="layui-breadcrumb">
+	  <a href="#!home">首页</a>
+	  <a><cite>知识库</cite></a>
+	</span>
+</div>
+
+<div>
+	<div class="layui-form toolbar">
+		<input id="queryStr" placeholder="请输入关键词" type="text" class="layui-input search-input" maxlength="200"  style="width: 475px;" />&emsp;
+		<button id="searchBtn" class="layui-btn search-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+	</div>
+	<div id = "result" style="margin-right:80px">
+<!-- 		<div class="layui-card" style="margin-top:30px"> -->
+<!-- 		  <div class="layui-card-header" style="height:28px;">卡片面板</div> -->
+<!-- 		  <div class="layui-card-body"> -->
+<!-- 		    卡片式面板面板通常用于非白色背景色的主体内<br> -->
+<!-- 		    从而映衬出边框投影 -->
+<!-- 		  </div> -->
+<!-- 		</div> -->
+	</div>
+	
+	<div id="pager"></div>
+</div>
+
+<link rel="stylesheet" href="assets/css/markdown-git.css" />
+
+<!-- 表单弹窗:查看 -->
+<script type="text/html" id="viewKnowledgeModel">
+	<div style="height: 850px;margin:10px">
+		<div class="markdown-body" id="context" style="height: 100%;overflow: auto"></div>
+	</div>
+</script>
+
+<script type="text/javascript" src="assets/js/knowledge/knowledgesearch.js"></script>
+<script type="text/javascript"
+	src="assets/showdown-master/dist/showdown.js"></script>
